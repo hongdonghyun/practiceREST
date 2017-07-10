@@ -16,7 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from snippets import views
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^snippets/$',include('snippets.urls'))
+    url(r'^$', include('snippets.urls')),
+    url(r'^users/$', views.UserList.as_view()),
+    url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view),
 ]
+
